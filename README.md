@@ -1,6 +1,6 @@
 # go-learning
 personal repository for tracking Golang's learning process
-# Go Learning Journey 🏃‍♂️💻
+# Go Learning Journey
 
 This repository is my personal **Golang learning process**, documenting my progress from **basics to projects**.  
 It serves as a reference, practice space, and record of key concepts I’ve learned along the way.
@@ -28,6 +28,8 @@ Personal notes, diagrams, and tips for deeper understanding.
 Books, courses, blogs, and other references I use to guide my learning.
 
 ---
+## **Current State**
+diving into the language fundamental features.
 
 ## **Goals**
 - Build a strong foundation in Go.

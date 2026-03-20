@@ -31,3 +31,15 @@ rune // alias for int32
 float32 float64
 
 complex64 complex128
+
+### Type Conversions
+Go uses the format of T(v) to the convert the value v to type T
+such as, var x int = 10, y = float64(x)
+
+
+### Type Inference
+When declaring a variable without specifying an explicit type (either by using the := syntax or var = expression syntax), the variable type is inferred from the value on the right hand side.
+var i int
+j := i (j is an int)
+a := 42 (a is an int)
+
