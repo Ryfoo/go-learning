@@ -1,11 +1,11 @@
-##**Golang Basics**
+## **Golang Basics**
 
 
 Every Go program is made up of packages.
 
 Programs start running in package main. 
 
-###Type Convention 
+### Type Convention 
 any variable name that starts with capital letter means thatit can be exported such as, Pi
 while names that do not start with capital letters such as value and result cannot be exported outside the package
 
