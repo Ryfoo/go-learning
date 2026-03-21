@@ -43,3 +43,5 @@ var i int
 j := i (j is an int)
 a := 42 (a is an int)
 
+### Switch Case
+Go switch is like the one in C, C++, Java, JavaScript, and PHP, except that Go only runs the selected case, not all the cases that follow. In effect, the break statement that is needed at the end of each case in those languages is provided automatically in Go. Another important difference is that Gos switch cases need not be constants, and the values involved need not be integers. 
