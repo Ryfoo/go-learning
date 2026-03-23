@@ -17,3 +17,7 @@ automatically attach the address for it, for instance func (v *mytype) my_func()
 and v was passed instead of &v, the compiler will automaticall pass the address of v instead
 the same thing goes with dereferncing (*)
 
+
+### Type parameters
+
+Go functions can be written to work on multiple types using type parameters. The type parameters of a function appear between brackets, before the functions arguments.
