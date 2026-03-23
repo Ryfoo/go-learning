@@ -4,6 +4,7 @@ const REPO = "Ryfoo/go-learning";
 const BRANCH = "main";
 
 const FOLDERS: { id: string; label: string }[] = [
+  { id: "", label: "Main" },
   { id: "Basics", label: "Basics" },
   { id: "AdvancedTopics", label: "Advanced Topics" },
   { id: "stdlib", label: "Stdlib" },
@@ -15,22 +16,35 @@ const RAW = (folder: string): string =>
   `https://raw.githubusercontent.com/${REPO}/${BRANCH}/${folder}/README.md`;
 
 function MarkdownRenderer({ content }: { content: string }) {
+  const toId = (raw: string): string =>
+    raw
+      .toLowerCase()
+      .replace(/[`*]/g, "")
+      .replace(/[^\w\s-]/g, "")
+      .trim()
+      .replace(/\s+/g, "-");
+
   const render = (text: string): string => {
     if (!text) return "";
     return text
-      .replace(/^#{6}\s(.+)$/gm, '<h6 class="md-h6">$1</h6>')
-      .replace(/^#{5}\s(.+)$/gm, '<h5 class="md-h5">$1</h5>')
-      .replace(/^#{4}\s(.+)$/gm, '<h4 class="md-h4">$1</h4>')
-      .replace(/^#{3}\s(.+)$/gm, '<h3 class="md-h3">$1</h3>')
-      .replace(/^#{2}\s(.+)$/gm, '<h2 class="md-h2">$1</h2>')
-      .replace(/^#{1}\s(.+)$/gm, '<h1 class="md-h1">$1</h1>')
+      .replace(/^#{6}\s(.+)$/gm, (_, t) => `<h6 class="md-h6" id="${toId(t)}">${t}</h6>`)
+      .replace(/^#{5}\s(.+)$/gm, (_, t) => `<h5 class="md-h5" id="${toId(t)}">${t}</h5>`)
+      .replace(/^#{4}\s(.+)$/gm, (_, t) => `<h4 class="md-h4" id="${toId(t)}">${t}</h4>`)
+      .replace(/^#{3}\s(.+)$/gm, (_, t) => `<h3 class="md-h3" id="${toId(t)}">${t}</h3>`)
+      .replace(/^#{2}\s(.+)$/gm, (_, t) => `<h2 class="md-h2" id="${toId(t)}">${t}</h2>`)
+      .replace(/^#{1}\s(.+)$/gm, (_, t) => `<h1 class="md-h1" id="${toId(t)}">${t}</h1>`)
       .replace(/```(\w+)?\n([\s\S]*?)```/gm, '<pre class="md-pre"><code>$2</code></pre>')
       .replace(/`([^`]+)`/g, '<code class="md-code">$1</code>')
       .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
       .replace(/\*(.+?)\*/g, "<em>$1</em>")
       .replace(/^\s*[-*]\s(.+)$/gm, '<li class="md-li">$1</li>')
       .replace(/(<li[\s\S]*?<\/li>)/g, '<ul class="md-ul">$1</ul>')
-      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a class="md-a" href="$2" target="_blank" rel="noreferrer">$1</a>')
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, href) => {
+        if (href.startsWith("#")) {
+          return `<a class="md-a" href="${href}" onclick="document.getElementById('${href.slice(1)}')?.scrollIntoView({behavior:'smooth'});return false;">${label}</a>`;
+        }
+        return `<a class="md-a" href="${href}" target="_blank" rel="noreferrer">${label}</a>`;
+      })
       .replace(/^(?!<[hupla]|<\/[hupla]|<pre|<\/pre)(.+)$/gm, '<p class="md-p">$1</p>')
       .replace(/\n{2,}/g, "");
   };
@@ -44,7 +58,7 @@ function MarkdownRenderer({ content }: { content: string }) {
 }
 
 export default function App() {
-  const [active, setActive] = useState<string>("basics");
+  const [active, setActive] = useState<string>("");
   const [contents, setContents] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);

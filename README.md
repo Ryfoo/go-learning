@@ -64,7 +64,7 @@ Make sure you have the latest version of [Go](https://go.dev/doc/install) instal
 
 Note : all Go's packages will work perfectly fine without further installation & setup, thanks to Go importing and packaging systems.
 
-```Go
+```bash
 cd specified-dir
 go run filename.go
 ```
@@ -99,7 +99,6 @@ npm install
 
 ### Step 2 — Run the app
 
-```
 
 Then start the dev server:
 
