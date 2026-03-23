@@ -4,11 +4,11 @@ const REPO = "Ryfoo/go-learning";
 const BRANCH = "main";
 
 const FOLDERS: { id: string; label: string }[] = [
-  { id: "basics", label: "Basics" },
-  { id: "advanced_topics", label: "Advanced Topics" },
+  { id: "Basics", label: "Basics" },
+  { id: "AdvancedTopics", label: "Advanced Topics" },
   { id: "stdlib", label: "Stdlib" },
-  { id: "project", label: "Project" },
-  { id: "notes", label: "Notes" },
+  { id: "Project", label: "Project" },
+  { id: "Notes", label: "Notes" },
 ];
 
 const RAW = (folder: string): string =>
