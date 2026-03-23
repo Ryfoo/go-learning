@@ -4,6 +4,8 @@ Personal repository for tracking my Golang learning journey — from the very ba
 
 ---
 
+
+
 ## 🔴 Repository Structure
 
 ```
@@ -55,7 +57,15 @@ Diving into the language's fundamental features.
 - Alternatively, you can browse folders to explore topics by category and read all the provided README files.
 - Run examples in each folder to practice hands-on using :
 
+
+### 🟡 Prerequisite
+
+Make sure you have the latest version of [Go](https://go.dev/doc/install) installed (v1.26.1)
+
+Note : all Go's packages will work perfectly fine without further installation & setup, thanks to Go importing and packaging systems.
+
 ```Go
+cd specified-dir
 go run filename.go
 ```
 
