@@ -8,30 +8,30 @@ Personal repository for tracking my Golang learning journey — from the very ba
 
 ```
 go-learning/
-├── 01_basics/
-├── 02_advanced/
-├── 03_standard_library/
-├── 04_projects/
-├── 05_notes/
-└── 06_resources/
+├── Basics/
+├── AdvancedTopics/
+├── stdlib/
+├── Projects/
+├── Notes/
+└── Resources/
 ```
 
-### 🟢 01_basics
+### 🟢 Basics
 Core Go fundamentals — syntax, variables, types, control structures, and functions.
 
-### 🟢 02_advanced
+### 🟢 AdvancedTopics
 Advanced concepts — structs, methods, interfaces, error handling, generics, and concurrency.
 
-### 🟢 03_standard_library
+### 🟢 stdlib
 Experiments and examples with Go's standard library (`fmt`, `os`, `net/http`, `time`, and more).
 
-### 🟢 04_projects
+### 🟢 Projects
 Mini projects applying what I have learned — calculators, TODO apps, HTTP servers, and beyond.
 
-### 🟢 05_notes
+### 🟢 Notes
 Personal notes, diagrams, and tips for deeper understanding.
 
-### 🟢 06_resources
+### 🟢 Resources
 Books, courses, blogs, and other references guiding the learning process.
 
 ---
@@ -51,15 +51,19 @@ Diving into the language's fundamental features.
 
 ## 🔴 Usage
 
-- Browse folders to explore topics by category.
-- Run examples in each folder to practice hands-on.
-- Use `05_notes/` to review key concepts and tips.
+- Setup the interface using React/TS (you can follow the next section for a straightforward setup process)
+- Alternatively, you can browse folders to explore topics by category and read all the provided README files.
+- Run examples in each folder to practice hands-on using :
+
+```Go
+go run filename.go
+```
 
 ---
 
-## 🟢 Frontend Setup — React + TypeScript + Tailwind CSS
+## 🟢 Frontend Setup
 
-For any project in `04_projects/` that includes a frontend interface, follow this setup to scaffold a React app with TypeScript and Tailwind CSS v3.3.3.
+this repository provides a very minimalistic & clean interface for reading all the documents that are proivded.
 
 ---
 
@@ -72,100 +76,19 @@ Make sure you have the following installed before starting:
 
 ---
 
-### Step 1 — Scaffold the React + TypeScript app
+### Step 1 — Go to Interface
 
-Use Vite to create the project (fast, minimal, and the current standard):
+inside the project's folder:
 
 ```bash
-npm create vite@latest my-app -- --template react-ts
-cd my-app
+cd interface
 npm install
 ```
 
-> 🟡 Replace `my-app` with your actual project name.
-
 ---
 
-### Step 2 — Install Tailwind CSS v3.3.3
+### Step 2 — Run the app
 
-Pin the exact version to stay on the LTS-stable v3 release:
-
-```bash
-npm install -D tailwindcss@3.3.3 postcss autoprefixer
-npx tailwindcss init -p
-```
-
-The `-p` flag generates both `tailwind.config.js` and `postcss.config.js` in one step.
-
----
-
-### Step 3 — Configure Tailwind to scan your source files
-
-Open `tailwind.config.js` and update the `content` array so Tailwind knows which files to scan for class names:
-
-```js
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-}
-```
-
----
-
-### Step 4 — Add Tailwind directives to your CSS
-
-Replace the contents of `src/index.css` with the three Tailwind directives:
-
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
-
----
-
-### Step 5 — Make sure the CSS is imported
-
-Open `src/main.tsx` and confirm that `index.css` is imported at the top (Vite includes this by default, but worth checking):
-
-```tsx
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
-
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
-```
-
----
-
-### Step 6 — Verify the setup
-
-Replace the contents of `src/App.tsx` with a quick smoke test:
-
-```tsx
-function App() {
-  return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <h1 className="text-4xl font-bold text-blue-600">
-        React + TypeScript + Tailwind CSS
-      </h1>
-    </div>
-  )
-}
-
-export default App
 ```
 
 Then start the dev server:
@@ -174,40 +97,6 @@ Then start the dev server:
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173) — if you see the styled heading, everything is working.
+Open [http://localhost:5173](http://localhost:5173)
 
----
 
-### Final Project Structure
-
-After setup, your frontend project will look like this:
-
-```
-my-app/
-├── public/
-├── src/
-│   ├── assets/
-│   ├── App.tsx
-│   ├── main.tsx
-│   └── index.css        ← Tailwind directives live here
-├── index.html
-├── tailwind.config.js   ← Tailwind configuration
-├── postcss.config.js    ← PostCSS configuration (auto-generated)
-├── tsconfig.json
-└── vite.config.ts
-```
-
----
-
-### Quick Reference — Useful Commands
-
-| Command | What it does |
-|---------|-------------|
-| `npm run dev` | Start the development server |
-| `npm run build` | Build for production |
-| `npm run preview` | Preview the production build locally |
-| `npx tailwindcss --help` | Check Tailwind CLI options |
-
----
-
-> 🟢 You are all set. From here, build out your components in `src/`, use Tailwind utility classes freely, and connect to your Go backend via `fetch` or a library like [axios](https://axios-http.com/).
