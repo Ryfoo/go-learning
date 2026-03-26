@@ -24,7 +24,7 @@ Welcome! This guide walks you through the fundamentals of Go in a friendly, appr
 
 Every Go program is made up of **packages**. Think of a package as a folder of related code that you can share and reuse.
 
-All programs start running in the special `main` package — that is where Go looks for the entry point of your application.
+All programs start running in the special `main` package — it is the entry-point of your project, think of is as the beating heart.
 
 ```go
 package main
@@ -37,6 +37,7 @@ func main() {
 ```
 
 You can import multiple packages at once using a grouped import, which is the preferred style:
+be aware that Go's compiler gets rid of any unused packages. Luckily, participant must work in Go's code, meaning less resources overhead.
 
 ```go
 import (
@@ -55,6 +56,8 @@ Go uses a simple but important rule for controlling what gets shared between pac
 - 🔴 **Unexported** (private) — names that **start with a lowercase letter** stay inside their own package. Example: `value`, `result`, `helperFunc`
 
 This is Go's way of doing access control — no `public` or `private` keywords needed.
+You may be wondering why, right ? that's the reason why Go exists at the first place, it is the "using minimal syntax philosophy" mindset. Go to other programming languages is RISC to CISC. 
+Not an absolute statement since, brainf*ck exists.
 
 ---
 
@@ -87,6 +90,7 @@ var (
 ```
 
 > 🟡 Note: Go does not allow unused variables. If you declare a variable and never use it, the compiler will throw an error. This keeps your code clean.
+>Everyone must work rule v_v.
 
 **Zero Values** — if you declare a variable without assigning a value, Go gives it a default "zero value":
 
@@ -219,7 +223,8 @@ func divide(a, b float64) (float64, error) {
 }
 ```
 
-**Named return values** — you can name the return values and use a bare `return`:
+**Named return values** — you can name the return values and use a bare `return`,
+I usually call it the Naked Return Values, since the return operator doesn't carry any variables:
 
 ```go
 func minMax(arr []int) (min, max int) {
@@ -288,7 +293,7 @@ if result, err := someFunc(); err != nil {
 
 Go's `switch` is like the one in C, Java, or JavaScript, with two key differences:
 
-- 🟢 Go automatically breaks after each case — you do not need to write `break`
+- 🟢 Go automatically breaks after each case — you do not need to write `break` that's what makes it the best language in the world, f*ck Javascript.
 - 🟡 Cases do not have to be constants or integers
 
 ```go
@@ -322,7 +327,13 @@ default:
 ## 🟢 Loops
 
 Go has only one looping keyword: `for`. But it is flexible enough to cover all your looping needs.
+All you have to know is the general structure :
 
+for initialization of the iteration variable; condition; iteration
+{
+    body
+}
+and starting from that you can implement while-loop, repeat-until-loop and
 **Basic loop (like a C-style for):**
 
 ```go
