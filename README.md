@@ -1,3 +1,5 @@
+![Banner](assets/banner.png)
+
 # go-learning
 
 Personal repository for tracking my Golang learning journey — from the very basics all the way to building real projects.
