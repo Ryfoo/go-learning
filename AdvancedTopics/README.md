@@ -1,6 +1,6 @@
 # Go (Golang) — Advanced Concepts
 
-This guide picks up where the basics left off. Here you will find the concepts that make Go genuinely powerful and a joy to work with — methods, interfaces, generics, and concurrency. Take your time with each section; these ideas build on one another.
+This guide picks up where the basics left off. Here you will find the concepts that make Go genuinely powerful, and eventually you will start reminding everyone of how great Go is, similar to what happens when you watch "Breaking Bad" — you will enjoy working with methods, interfaces, generics, and concurrency. Take your time with each section; these ideas build on one another.
 
 ---
 
@@ -29,7 +29,7 @@ This guide picks up where the basics left off. Here you will find the concepts t
 
 ## 🟢 Structs
 
-Before diving into methods, you need to know about structs. A **struct** is a collection of fields grouped together under one name — Go's way of modeling a real-world object.
+Before diving into methods, you need to know about structs, even C includes them, it's shame not to know about them. A **struct** is a collection of fields grouped together under one name — Go's way of modeling a real-world object.
 
 ```go
 type Vertex struct {
@@ -58,7 +58,7 @@ p.X = 10  // same as (*p).X = 10 — Go handles this for you
 
 ## 🟢 Methods
 
-Go does not have classes, but you can define **methods** on any type you define. A method is just a function with a special extra argument called the **receiver**, which appears between the `func` keyword and the method name.
+Go does not have classes, but you can define **methods** on any type you define you will find it absurd and meaningless at first, why Go doesn't include them but you will get used to it. A method is just a function with a special extra argument called the **receiver**, which appears between the `func` keyword and the method name.
 
 ```go
 type Vertex struct {
@@ -159,6 +159,7 @@ p.Print()  // Go rewrites this as (*p).Print() automatically
 ## 🟢 Interfaces
 
 An **interface** is a set of method signatures. Any type that implements all those methods automatically satisfies the interface — no explicit declaration needed. This is called **implicit implementation** and it is one of Go's best features.
+Think of it as a group that requries certain rules, every object satisfies these rules will be granted rewards (the operations offered by the interface).
 
 ```go
 type Shape interface {
